@@ -88,4 +88,21 @@ public class Gender {
         return romanticAttraction;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder descriptionBuilder = new StringBuilder();        
+        descriptionBuilder.append(genderIdentity.toString());
+        descriptionBuilder.append(System.lineSeparator());
+        descriptionBuilder.append(genderExpression.toString());
+        descriptionBuilder.append(System.lineSeparator());
+        descriptionBuilder.append("Assigned birth sex : ");
+        descriptionBuilder.append(assignedBirthSex.name());
+        descriptionBuilder.append(System.lineSeparator());
+        descriptionBuilder.append(sexualAttraction.toString());
+        descriptionBuilder.append(System.lineSeparator());
+        descriptionBuilder.append(romanticAttraction.toString());  
+        descriptionBuilder.append(System.lineSeparator());              
+        return descriptionBuilder.toString(); 
+    }
+    
 }

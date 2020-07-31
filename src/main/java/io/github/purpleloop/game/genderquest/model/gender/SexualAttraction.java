@@ -31,4 +31,18 @@ public class SexualAttraction {
         return sexualAttraction;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder descriptionBuilder = new StringBuilder();
+        descriptionBuilder.append("Sexual attraction : ");
+        for (BaseGender baseGender : BaseGender.values()) {
+            descriptionBuilder.append(baseGender.getSocialAdult());
+            descriptionBuilder.append("(");
+            descriptionBuilder.append(sexualAttraction.get(baseGender).ordinal());
+            descriptionBuilder.append(") ");
+        }
+                
+        return descriptionBuilder.toString(); 
+    }
+    
 }

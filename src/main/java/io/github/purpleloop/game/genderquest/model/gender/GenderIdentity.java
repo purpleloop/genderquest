@@ -34,5 +34,19 @@ public class GenderIdentity {
     public Map<BaseGender, Scale> getIdentification() {
         return identification;
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder descriptionBuilder = new StringBuilder();
+        descriptionBuilder.append("Gender identity : ");
+        for (BaseGender baseGender : BaseGender.values()) {
+            descriptionBuilder.append(baseGender.getSocialAdult());
+            descriptionBuilder.append("(");
+            descriptionBuilder.append(identification.get(baseGender).ordinal());
+            descriptionBuilder.append(") ");
+        }
+                
+        return descriptionBuilder.toString(); 
+    }
 
 }

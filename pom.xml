@@ -74,6 +74,11 @@
             <artifactId>purple-commons</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.purpleloop</groupId>
+            <artifactId>purple-commons-swing</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     
 </project>

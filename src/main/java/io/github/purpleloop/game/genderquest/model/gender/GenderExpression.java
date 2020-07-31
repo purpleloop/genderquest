@@ -35,4 +35,18 @@ public class GenderExpression {
         return expression;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder descriptionBuilder = new StringBuilder();
+        descriptionBuilder.append("Gender expression : ");
+        for (BaseGender baseGender : BaseGender.values()) {
+            descriptionBuilder.append(baseGender.getAdjective());
+            descriptionBuilder.append("(");
+            descriptionBuilder.append(expression.get(baseGender).ordinal());
+            descriptionBuilder.append(") ");
+        }
+                
+        return descriptionBuilder.toString(); 
+    }
+    
 }
