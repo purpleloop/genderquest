@@ -17,10 +17,7 @@ So here we are, I'll bring here ideas, resources, code pieces and incrementally 
 ## Disclaimer 
 
 This is the very early stage, so please be patient.
-This my personal universe i'd like to share, independently of any organization. 
 I know, gender topics are controversial. 
-For fun, entertainment and de-dramatization purpose the choice of humor and second degree has been done.
-For simplicity, I do use stereotypes and I also have to reduce the amount of possibles in the spectrum.
 However, I'll try to make this work respectful and open.
 You can also tell me if something is wrong : there always will be place for improvement.
 Enjoy if you stay, sorry if to go, but it's okay.
