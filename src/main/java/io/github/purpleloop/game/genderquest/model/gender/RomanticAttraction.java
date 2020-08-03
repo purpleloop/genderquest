@@ -14,6 +14,9 @@ public class RomanticAttraction {
     /** Constructs a romantic attraction. */
     public RomanticAttraction() {
         romanticAttraction = new HashMap<>();
+        for (BaseGender baseGender : BaseGender.values()) {
+            setRomanticAttractionForGender(baseGender, Scale.N0);
+        }
     }
 
     /**
@@ -42,8 +45,8 @@ public class RomanticAttraction {
             descriptionBuilder.append(romanticAttraction.get(baseGender).ordinal());
             descriptionBuilder.append(") ");
         }
-                
-        return descriptionBuilder.toString(); 
+
+        return descriptionBuilder.toString();
     }
-    
+
 }

@@ -18,6 +18,9 @@ public class GenderIdentity {
     /** Creates a gender identity. */
     public GenderIdentity() {
         identification = new HashMap<>();
+        for (BaseGender baseGender : BaseGender.values()) {
+            setIdentificationForGender(baseGender, Scale.N0);
+        }
     }
 
     /**
@@ -34,7 +37,7 @@ public class GenderIdentity {
     public Map<BaseGender, Scale> getIdentification() {
         return identification;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder descriptionBuilder = new StringBuilder();
@@ -45,8 +48,8 @@ public class GenderIdentity {
             descriptionBuilder.append(identification.get(baseGender).ordinal());
             descriptionBuilder.append(") ");
         }
-                
-        return descriptionBuilder.toString(); 
+
+        return descriptionBuilder.toString();
     }
 
 }

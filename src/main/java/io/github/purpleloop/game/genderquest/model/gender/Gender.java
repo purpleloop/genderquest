@@ -29,6 +29,7 @@ public class Gender {
 
         genderIdentity = new GenderIdentity();
         genderExpression = new GenderExpression();
+        setAssignedBirthSex(AssignedBirthSex.FEMALE);
         sexualAttraction = new SexualAttraction();
         romanticAttraction = new RomanticAttraction();
     }

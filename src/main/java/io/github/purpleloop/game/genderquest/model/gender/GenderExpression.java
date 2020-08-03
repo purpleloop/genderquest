@@ -17,6 +17,9 @@ public class GenderExpression {
     /** Constructs a gender expression. */
     public GenderExpression() {
         expression = new HashMap<>();
+        for (BaseGender baseGender : BaseGender.values()) {
+            setExpressionForGender(baseGender, Scale.N0);
+        }
     }
 
     /**
@@ -45,8 +48,8 @@ public class GenderExpression {
             descriptionBuilder.append(expression.get(baseGender).ordinal());
             descriptionBuilder.append(") ");
         }
-                
-        return descriptionBuilder.toString(); 
+
+        return descriptionBuilder.toString();
     }
-    
+
 }

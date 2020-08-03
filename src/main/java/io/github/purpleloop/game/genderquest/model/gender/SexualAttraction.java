@@ -14,10 +14,14 @@ public class SexualAttraction {
     /** Constructor for sexual attraction. */
     public SexualAttraction() {
         sexualAttraction = new HashMap<>();
+        for (BaseGender baseGender : BaseGender.values()) {
+            setSexualAttractionForGender(baseGender, Scale.N0);
+        }
     }
 
     /**
-     * Set how we are sexually attracted to a base gender according to a scale value.
+     * Set how we are sexually attracted to a base gender according to a scale
+     * value.
      * 
      * @param baseGender base gender
      * @param value scale value
@@ -41,8 +45,8 @@ public class SexualAttraction {
             descriptionBuilder.append(sexualAttraction.get(baseGender).ordinal());
             descriptionBuilder.append(") ");
         }
-                
-        return descriptionBuilder.toString(); 
+
+        return descriptionBuilder.toString();
     }
-    
+
 }
