@@ -13,8 +13,8 @@ import javax.swing.JTextField;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import io.github.purpleloop.commons.swing.SwingUtils;
 import io.github.purpleloop.game.genderquest.model.Persona;
-import purpleloop.commons.swing.SwingUtils;
 
 /** The panel for a editing a persona. */
 public class PersonaPanel extends JPanel {

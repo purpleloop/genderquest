@@ -14,6 +14,7 @@ import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 
+import io.github.purpleloop.commons.swing.SwingUtils;
 import io.github.purpleloop.game.genderquest.model.Scale;
 import io.github.purpleloop.game.genderquest.model.gender.AssignedBirthSex;
 import io.github.purpleloop.game.genderquest.model.gender.BaseGender;
@@ -22,7 +23,6 @@ import io.github.purpleloop.game.genderquest.model.gender.GenderExpression;
 import io.github.purpleloop.game.genderquest.model.gender.GenderIdentity;
 import io.github.purpleloop.game.genderquest.model.gender.RomanticAttraction;
 import io.github.purpleloop.game.genderquest.model.gender.SexualAttraction;
-import purpleloop.commons.swing.SwingUtils;
 
 /** A panel to edit gender characteristics. */
 public class GenderPanel extends JPanel {

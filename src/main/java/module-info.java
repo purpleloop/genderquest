@@ -3,6 +3,6 @@ module gendequest {
 	
 	requires commons.logging;
 	requires java.desktop;
-	requires purpleloop.commons;
-	requires purpleloop.commons.swing;
+	requires io.github.purpleloop.commons;
+	requires io.github.purpleloop.commons.swing;
 }
