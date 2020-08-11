@@ -1,12 +1,9 @@
 package io.github.purpleloop.game.genderquest.gui;
 
 import java.awt.GridLayout;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -14,6 +11,7 @@ import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 
+import io.github.purpleloop.commons.swing.ComponentMap;
 import io.github.purpleloop.commons.swing.SwingUtils;
 import io.github.purpleloop.game.genderquest.model.Scale;
 import io.github.purpleloop.game.genderquest.model.gender.AssignedBirthSex;
@@ -45,18 +43,18 @@ public class GenderPanel extends JPanel {
     /** Identifies sliders for romantic attraction. */
     private static final String ROMANTIC_ATTRACTION_SLIDER = "romanticAttractionSlider";
 
-    /** Map of created components for update uses. */
-    private Map<String, JComponent> components;
-
     /** Button group for assigned birth sex. */
     private ButtonGroup assignedBirthButtonGroup;
+
+    /** The component map. */
+    private ComponentMap components;
 
     /** Constructor. */
     public GenderPanel() {
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        components = new HashMap<>();
+        components = new ComponentMap();
 
         addGenderIdentityPanel();
         add(new JSeparator(SwingConstants.HORIZONTAL));
@@ -80,7 +78,7 @@ public class GenderPanel extends JPanel {
             genderIdentityPanel.add(new JLabel(baseGender.getSocialAdult(), SwingConstants.RIGHT));
             JSlider slider = SwingUtils.createSlider(genderIdentityPanel, Scale.N0.ordinal(),
                     Scale.N9.ordinal(), Scale.N0.ordinal(), 1, true);
-            components.put(GENDER_ID_SLIDER + baseGender.name(), slider);
+            components.add(GENDER_ID_SLIDER + baseGender.name(), slider);
 
         }
         add(genderIdentityPanel);
@@ -97,7 +95,7 @@ public class GenderPanel extends JPanel {
             genderExpressionPanel.add(new JLabel(baseGender.getAdjective(), SwingConstants.RIGHT));
             JSlider slider = SwingUtils.createSlider(genderExpressionPanel, Scale.N0.ordinal(),
                     Scale.N9.ordinal(), Scale.N0.ordinal(), 1, true);
-            components.put(GENDER_EXP_SLIDER + baseGender.name(), slider);
+            components.add(GENDER_EXP_SLIDER + baseGender.name(), slider);
 
         }
         add(genderExpressionPanel);
@@ -117,7 +115,7 @@ public class GenderPanel extends JPanel {
             JRadioButton assignedBirthRadioButton = SwingUtils.createRadioButton(assignedSex.name(),
                     null, assignedBirthButtonGroup, null, assignedBirthSexPanel, false);
 
-            components.put(ASSIGNED_BIRTH_RADIO + assignedSex.name(), assignedBirthRadioButton);
+            components.add(ASSIGNED_BIRTH_RADIO + assignedSex.name(), assignedBirthRadioButton);
 
         }
 
@@ -136,7 +134,7 @@ public class GenderPanel extends JPanel {
                     .add(new JLabel(baseGender.getSocialAdult(), SwingConstants.RIGHT));
             JSlider slider = SwingUtils.createSlider(sexualAttractionPanel, Scale.N0.ordinal(),
                     Scale.N9.ordinal(), Scale.N0.ordinal(), 1, true);
-            components.put(SEXUAL_ATTRACTION_SLIDER + baseGender.name(), slider);
+            components.add(SEXUAL_ATTRACTION_SLIDER + baseGender.name(), slider);
 
         }
         add(sexualAttractionPanel);
@@ -154,7 +152,7 @@ public class GenderPanel extends JPanel {
                     .add(new JLabel(baseGender.getSocialAdult(), SwingConstants.RIGHT));
             JSlider slider = SwingUtils.createSlider(romanticAttractionPanel, Scale.N0.ordinal(),
                     Scale.N9.ordinal(), Scale.N0.ordinal(), 1, true);
-            components.put(ROMANTIC_ATTRACTION_SLIDER + baseGender.name(), slider);
+            components.add(ROMANTIC_ATTRACTION_SLIDER + baseGender.name(), slider);
 
         }
         add(romanticAttractionPanel);
@@ -183,7 +181,7 @@ public class GenderPanel extends JPanel {
     private void setGenderIdentity(GenderIdentity genderIdentity) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(GENDER_ID_SLIDER + genderName);
+            JSlider slider = components.get(GENDER_ID_SLIDER + genderName);
             slider.setValue(genderIdentity.getIdentification().get(baseGender).ordinal());
         }
     }
@@ -196,7 +194,7 @@ public class GenderPanel extends JPanel {
     private void setGenderExpression(GenderExpression genderExpression) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(GENDER_EXP_SLIDER + genderName);
+            JSlider slider = components.get(GENDER_EXP_SLIDER + genderName);
             slider.setValue(genderExpression.getExpression().get(baseGender).ordinal());
         }
     }
@@ -210,8 +208,7 @@ public class GenderPanel extends JPanel {
 
         for (AssignedBirthSex assignedSex : AssignedBirthSex.values()) {
             String sexName = assignedSex.name();
-            JRadioButton assignedBirthRadioButton = (JRadioButton) components
-                    .get(ASSIGNED_BIRTH_RADIO + sexName);
+            JRadioButton assignedBirthRadioButton = components.get(ASSIGNED_BIRTH_RADIO + sexName);
             assignedBirthRadioButton.setSelected(sexName.equals(assignedBirthSex.name()));
         }
     }
@@ -224,7 +221,7 @@ public class GenderPanel extends JPanel {
     private void setSexualAttraction(SexualAttraction sexualAttraction) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(SEXUAL_ATTRACTION_SLIDER + genderName);
+            JSlider slider = components.get(SEXUAL_ATTRACTION_SLIDER + genderName);
             slider.setValue(sexualAttraction.getSexualAttraction().get(baseGender).ordinal());
         }
     }
@@ -237,7 +234,7 @@ public class GenderPanel extends JPanel {
     private void setRomanticAttraction(RomanticAttraction romanticAttraction) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(ROMANTIC_ATTRACTION_SLIDER + genderName);
+            JSlider slider = components.get(ROMANTIC_ATTRACTION_SLIDER + genderName);
             slider.setValue(romanticAttraction.getRomanticAttraction().get(baseGender).ordinal());
         }
     }
@@ -263,7 +260,7 @@ public class GenderPanel extends JPanel {
     private void updateGenderIdentity(GenderIdentity genderIdentity) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(GENDER_ID_SLIDER + genderName);
+            JSlider slider = components.get(GENDER_ID_SLIDER + genderName);
             genderIdentity.setIdentificationForGender(baseGender,
                     Scale.values()[slider.getValue()]);
         }
@@ -277,7 +274,7 @@ public class GenderPanel extends JPanel {
     private void updateGenderExpression(GenderExpression genderExpression) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(GENDER_EXP_SLIDER + genderName);
+            JSlider slider = components.get(GENDER_EXP_SLIDER + genderName);
             genderExpression.setExpressionForGender(baseGender, Scale.values()[slider.getValue()]);
         }
     }
@@ -308,7 +305,7 @@ public class GenderPanel extends JPanel {
     private void updateSexualAttraction(SexualAttraction sexualAttraction) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(SEXUAL_ATTRACTION_SLIDER + genderName);
+            JSlider slider = components.get(SEXUAL_ATTRACTION_SLIDER + genderName);
             sexualAttraction.setSexualAttractionForGender(baseGender,
                     Scale.values()[slider.getValue()]);
         }
@@ -322,7 +319,7 @@ public class GenderPanel extends JPanel {
     private void updateRomanticAttraction(RomanticAttraction romanticAttraction) {
         for (BaseGender baseGender : BaseGender.values()) {
             String genderName = baseGender.name();
-            JSlider slider = (JSlider) components.get(ROMANTIC_ATTRACTION_SLIDER + genderName);
+            JSlider slider = components.get(ROMANTIC_ATTRACTION_SLIDER + genderName);
             romanticAttraction.setRomanticAttractionForGender(baseGender,
                     Scale.values()[slider.getValue()]);
         }
